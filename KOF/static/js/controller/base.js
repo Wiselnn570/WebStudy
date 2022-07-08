@@ -12,7 +12,7 @@ export class Controller {
             outer.pressed_keys.add(e.key);
         });
         this.$canvas.keyup((e) => {
-            outer.pressed_keys.remove(e.key);
+            outer.pressed_keys.delete(e.key);
         })
     }
 }
