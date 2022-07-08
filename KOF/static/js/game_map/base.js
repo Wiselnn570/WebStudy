@@ -12,18 +12,18 @@ export class GameMap extends GameObject {
         this.controller = new Controller(this.$canvas);
     }
 
-    draw() {
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillRect(0, 0, this.$canvas.width(), this.$canvas.height());
-        this.ctx.fill();
-    }
+    // draw() {
+    //     this.ctx.fillStyle = 'black';
+    //     this.ctx.fillRect(0, 0, this.$canvas.width(), this.$canvas.height());
+    //     this.ctx.fill();
+    // }
 
     start() {
-        this.draw();
     }
 
     update() {
-        this.draw();
+        let [a, b] = this.root.players;
+        if(a.status)
     }
 
     destroy() {
