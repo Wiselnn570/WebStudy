@@ -1,5 +1,5 @@
 import { GameMap } from "/KOF/static/js/game_map/base.js"
-import { Player } from "/KOF/static/js/player/base.js"
+import { Kyo } from "/KOF/static/js/player/kyo.js"
 
 class KOF {
     constructor(id) {
@@ -10,16 +10,16 @@ class KOF {
                 id: 0,
                 x: 200,
                 y: 0,
-                width: 120,
-                height: 200,
+                width: 150,
+                height: 250,
                 color: 'blue',
             }),
             new Kyo(this, {
                 id: 1,
                 x: 900,
                 y: 0,
-                width: 120,
-                height: 200,
+                width: 150,
+                height: 250,
                 color: 'red',
             }),
         ];

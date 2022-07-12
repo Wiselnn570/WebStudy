@@ -13,7 +13,7 @@ export class Kyo extends Player {
         let offsety;
         for (let i = 0; i < 7; i ++) {
             let gif = GIF();
-            gif.load('/KOF/static/images/player/kyo/${i}.gif');
+            gif.load(`/KOF/static/images/player/kyo/${i}.gif`);
             this.animations.set(i, {
                 gif: gif,
                 frame_cnt: 0,

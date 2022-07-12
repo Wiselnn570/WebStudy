@@ -20,7 +20,7 @@ export class Player extends GameObject {
         this.speedy = -2000;
 
         this.gravity = 50;
-
+        this.frame_current_cnt = 0;
         this.ctx = this.root.game_map.ctx;
         this.pressed_keys = this.root.game_map.controller.pressed_keys;
 
@@ -39,8 +39,8 @@ export class Player extends GameObject {
         this.x += this.vx * this.timedelta / 1000;
         this.y += this.vy * this.timedelta / 1000;
 
-        if (this.y > 450) {
-            this.y = 450;
+        if (this.y > 400) {
+            this.y = 400;
             this.vy = 0;
             
             if (this.status === 3) this.status = 0;
@@ -92,10 +92,34 @@ export class Player extends GameObject {
         }
     }
 
+    fixed() {
+        let x = this.x, y = this.y;
+        let width = this.width, height = this.height;
+        if (this.status === 3) {
+            width *= 1.45;
+            height *= 1.45;
+            x -= 50;
+        }
+        return [x, y, width, height];
+    }
+
+    render() {
+        let status = this.status;
+        let obj = this.animations.get(status);
+        if(obj && obj.loaded) {
+            let k = parseInt(this.frame_current_cnt / obj.frame_rate) % obj.frame_cnt;
+            let image = obj.gif.frames[k].image;
+            let x_y_w_h = this.fixed();
+            // console.log(params[0], params[1]);
+            this.ctx.drawImage(image, x_y_w_h[0], x_y_w_h[1], x_y_w_h[2], x_y_w_h[3]);
+        }
+        this.frame_current_cnt ++;
+    }
+
     update() {
         this.update_move();
         this.update_control();
-        this.draw();
+        this.render();
     }
     draw() {
         this.root.game_map.ctx.fillStyle = this.color;

@@ -23,9 +23,12 @@ export class GameMap extends GameObject {
 
     update() {
         let [a, b] = this.root.players;
-        if(a.status)
+        this.render();
     }
 
+    render() {
+        this.ctx.clearRect(0, 0, this.$canvas.width(), this.$canvas.height());
+    }
     destroy() {
 
     }
