@@ -28,7 +28,6 @@ export class Player extends GameObject {
         this.animations = new Map();
         this.hp = 100;
         this.$hp = this.root.$kof.find(`.kof-head-hp-${this.id} > div`);
-        this.$hp.width(this.$hp.parent().width * this.hp / 100);
     }
 
     start() {
@@ -47,7 +46,7 @@ export class Player extends GameObject {
     }
 
     update_move() {
-        if (this.status === 3 || this.status === 5) this.vy += this.gravity;
+        if (this.status === 3 || this.status === 5 || this.status === 6) this.vy += this.gravity;
         let you = this.root.players[1 - this.id];
         // if (this.collision()) {
         //     you.vx += this.vx;
@@ -123,7 +122,7 @@ export class Player extends GameObject {
     }
 
     update_direction() {
-
+        if (this.status === 6) return false;
         let players = this.root.players;
         if (players[0] && players[1]) {
             let me = this, you = players[1 - this.id];
@@ -133,15 +132,19 @@ export class Player extends GameObject {
     }
 
     is_attack() {
+        if (this.status === 6) return false;
         this.vx = 0;
         this.status = 5;
         this.frame_current_cnt = 0;
-        this.hp -= 50;
-        if (this.hp < 0) {
-            this.hp = 0;
+        this.hp = Math.max(this.hp - 20, 0);
+
+        this.$hp.animate({
+            width: this.$hp.parent().width() * this.hp / 100
+        }, 300);
+        
+        if (this.hp <= 0) {
             this.status = 6;
         }
-        
     }
 
     update_attack() {
@@ -208,6 +211,7 @@ export class Player extends GameObject {
         else if(this.status === 6) {
             width *= 1.8;
             height *= 1.3;
+            x -= 80;
         }
         return [x, y, width, height];
     }
