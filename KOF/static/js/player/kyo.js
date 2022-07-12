@@ -17,7 +17,7 @@ export class Kyo extends Player {
             this.animations.set(i, {
                 gif: gif,
                 frame_cnt: 0,
-                frame_rate: 5,
+                frame_rate: 8,
                 offset_y: 10,
                 loaded: false,
                 scale: 2,
