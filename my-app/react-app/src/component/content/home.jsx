@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class NavBar extends Component {
+class Home extends Component {
     state = {  } 
     render() { 
         return (
-            <h1>NavBar</h1>
+            <h1>Home</h1>
         );
     }
 }
  
-export default NavBar;
+export default Home;

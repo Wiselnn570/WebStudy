@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class NavBar extends Component {
+class List extends Component {
     state = {  } 
     render() { 
         return (
-            <h1>NavBar</h1>
+            <h1>List</h1>
         );
     }
 }
  
-export default NavBar;
+export default List;
