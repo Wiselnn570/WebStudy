@@ -22,8 +22,8 @@ class App extends Component {
                         <Route path='/home' element={<Home />} />
                         <Route path='/list' element={<List />} />
                         <Route path='/softWare' element={<SoftWare />}>
-                            <Route path='/softWare/boxes' element={<Boxes />}/>
-                            <Route path='/softWare/calcualtor' element={<Calculator />}/>
+                            <Route path='boxes' element={<h1>hello world</h1>}/>
+                            <Route path='calculator' element={<Calculator />}/>
                         </Route>
                         <Route path='/login' element={<Login />}/>
                         <Route path='/register' element={<Register />}/>
